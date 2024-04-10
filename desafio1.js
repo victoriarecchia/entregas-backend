@@ -2,9 +2,10 @@
 // Realizar una clase “ProductManager” que gestione un conjunto de productos.
 class ProductManager {
   // Debe crearse desde su constructor con el elemento products, el cual será un arreglo vacío.
-  constructor(products = []) {
-    this.products = products
+  constructor(path) {
+    this.products = []
     this.idCounter = 1;
+    this.path = path;
   }
 
   addProduct = (product) => {
@@ -17,7 +18,7 @@ class ProductManager {
     } else {
 
       product.id = this.idCounter++;
-      this.products.push(product)
+      products.push(product)
       console.log(`Producto: "${product.title}" agregado correctamente`);
     }
   }
@@ -29,7 +30,6 @@ class ProductManager {
   // En caso de no coincidir ningún id, mostrar en consola un error “Not found”
   getProductsById = (id) => {
     let product = this.products.find(item => item.id === id)
-
     product ? console.log(product) : console.log("Not found");
   }
 }
