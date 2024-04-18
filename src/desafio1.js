@@ -1,25 +1,26 @@
+// DESAFIO 1
 
 // Realizar una clase “ProductManager” que gestione un conjunto de productos.
 class ProductManager {
   // Debe crearse desde su constructor con el elemento products, el cual será un arreglo vacío.
   constructor(path) {
     this.products = []
-    this.idCounter = 1;
+    // this.idCounter = 1;
     this.path = path;
   }
 
-  addProduct = (product) => {
-    if (!product.title || !product.description || !product.price || !product.thumbnail || !product.code || !product.stock)
+  addProduct = (newProduct) => {
+    if (!newProduct.title || !newProduct.description || !newProduct.price || !newProduct.thumbnail || !newProduct.code || !newProduct.stock)
     console.log("Todos los campos son obligatorios");
 
-    let existe = this.products.find(item => item.code === product.code)
+    let existe = this.products.find(product => product.code === newProduct.code)
     if (existe) {
       console.log("Error, el codigo esta repetido");
     } else {
-
-      product.id = this.idCounter++;
-      products.push(product)
-      console.log(`Producto: "${product.title}" agregado correctamente`);
+      // product.id = this.idCounter++;
+      newProduct.id = this.products.length + 1
+      this.products.push(newProduct)
+      console.log(`Producto: "${newProduct.title}" agregado correctamente`);
     }
   }
   getProducts = () => {
@@ -29,8 +30,8 @@ class ProductManager {
   // Debe contar con un método “getProductById” el cual debe buscar en el arreglo el producto que coincida con el id
   // En caso de no coincidir ningún id, mostrar en consola un error “Not found”
   getProductsById = (id) => {
-    let product = this.products.find(item => item.id === id)
-    product ? console.log(product) : console.log("Not found");
+    let newProduct = this.products.find(product  => product.id === id)
+    newProduct ? console.log(newProduct) : console.log("Not found");
   }
 }
 
@@ -65,15 +66,16 @@ productManager.addProduct({
   description: "Este es un producto prueba",
   price: 200,
   thumbnail: "Sin imagen",
-  code: "abc123",
+  code: "abc1223",
   stock: 25,
 })
 
+productManager.getProducts();
 
 // Se evaluará que getProductById devuelva error si no encuentra el producto o el producto en caso de encontrarlo
 console.log("-------------------------------------------------------------------------------------------------------")
 console.log("Se evaluará que getProductById devuelva error si no encuentra el producto o el producto en caso de encontrarlo:");
-productManager.getProductsById(3);
+productManager.getProductsById();
 console.log("-------------------------------------------------------------------------------------------------------")
 
 
